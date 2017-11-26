@@ -11,6 +11,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Trocchi');
 
+a{
+  text-decoration: none !important;
+  color: black !important;
+}
+
 .App {
   position: absolute;
   height: 100%;
@@ -98,6 +103,7 @@
 .social-links img{
   height: 32px;
   width: auto;
+  cursor: pointer;
 }
 
 .pondering{
@@ -182,6 +188,7 @@
 }
 
 .top-banner {
+  z-index: 100 !important; 
   position: fixed;
   width: 100%;
   background: rgba(0, 0, 0, 0.1);
@@ -195,6 +202,7 @@
 }
 .top-banner h3 span{
   padding-bottom: 4px;
+  margin-right: 2%;
   border-bottom: 0.5px solid black;
   transition: all linear 0.2s;
 }
@@ -202,7 +210,119 @@
   padding-bottom: 1px;
   border-bottom: 2px solid black;
 }
+.top-banner input{
+  position: fixed;
+  top:-10%;
+}
+.errpage {
+  height: fit-content !important;
+  padding-bottom: 15% !important;
+}
 
+.admin {
+  height: fit-content !important;
+  padding-bottom: 10% !important;
+}
+.password{
+  height: fit-content !important;
+  max-width: 80% !important;
+  overflow-x: hidden !important;
+  max-height: none !important;
+}
+.password h3{
+  font-family: 'norwesterregular', sans-serif;
+  font-weight: 100 !important;
+  font-size: 12px !important;
+  letter-spacing: 4px !important;
+  margin-bottom: 9% !important;
+}
+.password input,textarea{
+  margin-bottom: 2px !important;
+  background: none !important;
+  border: none;
+  border-bottom: 0.5px solid black;
+  outline: none !important;
+  padding-bottom: 4px !important;
+  font-family: 'trocchi', sans-serif;
+  font-weight: 100 !important;
+  letter-spacing: 2px !important;
+}
+.portal h3{
+  margin: 0 !important;
+  font-size: 15px !important;
+}
+.types {
+  margin-top: 2px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+}
+.types h3{
+  font-size: 12px !important;
+  padding: 5% !important;
+  max-width: 20% !important;
+}
+.entry{
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-content: center !important;
+  align-items: center !important;
+  padding-bottom: 5% !important;
+}
+.entry input,textarea{
+  display: block !important;
+  width: 50% !important;
+  max-width: 50% !important;
+  margin-bottom: 10px !important;
+  text-align: left !important;
+}
+.entry p{
+  margin: 0 !important;
+  text-align: right !important;
+  width: 50% !important;
+  font-size: 11px !important;
+}
+.entry h3 {
+  margin-bottom: 5% !important;
+}
+.entry h3 span{
+  margin-right: 25px !important; 
+}
+#shortdesc{
+  overflow: auto !important;
+  text-align: left !important;
+}
+#content{
+  text-align: left !important;
+  overflow: auto !important;
+}
+#imageheading{
+  margin: 0 !important;
+  text-align: left !important;
+  width: 50% !important;
+  font-family: 'trocchi', sans-serif;
+  font-weight: 100 !important;
+  letter-spacing: 2px !important;
+  color: rgba(100,100,100,0.9) !important;
+}
+#image{
+  margin-bottom: 15px !important;
+}
+.entry progress{
+  width: 50% !important;
+  margin-bottom: 4px !important;
+  background: none !important;
+  border: none !important;
+}
+.entry h1{
+  font-size: 15px !important;
+  font-weight: lighter !important;
+  letter-spacing: 2px !important;
+  margin: 0 !important;
+  height: fit-content !important;
+  transition: all linear 0.3s !important;
+}
 @media (max-width:1024px) {
   .home img{
     width: 40% !important;
@@ -211,7 +331,89 @@
     margin-top: 10% !important;
   }
 }
-
+@media (max-width:425px) {
+  .home{
+    height: 70% !important;
+  }
+  .about h3 {
+    font-size: 18px !important;
+  }
+  .social {
+    height: 9% !important;
+    max-height: 9% !important;
+  }
+  .pondering{
+    height: 35% !important;
+  }
+  .pondering h1{
+    font-size: 60px !important;
+  }
+  .pondering-content .item p{
+    text-align: left !important;
+    font-family: sans-serif !important;
+    font-weight: lighter !important;
+    white-space: normal !important;
+    text-overflow: ellipsis !important;
+    position: relative;
+    max-height: 50% !important;
+  }
+  div.circ-image{
+    width: 100px !important;
+    height: 100px !important;
+    background: none !important;
+  }
+  .fullitem-title {
+    padding-top: 20% !important;
+    height: 30% !important;
+  }
+  .fullitem-title h1{
+    font-size: 40px !important;
+    line-height: 41px !important;
+  }
+  .fullitem-title h3{
+    font-size: 14px !important;
+  }
+  .fullitem-content img {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .fullitem-content{
+    height: fit-content !important;
+    max-height: none !important;
+  }
+  .admin{
+    height: fit-content !important;
+  }
+  .portal h3{
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+  .types h3{
+    flex: 1;
+    font-size: 12px !important;
+    max-width: none !important;
+  }
+  .entry input{
+    width: 80% !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  .entry textarea{
+    width: 80% !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+  .entry p{
+    width: 80% !important;
+  }
+  #imageheading{
+    width: 80% !important;
+  }
+  .entry progress{
+    width: 80% !important;
+  }
+}
 ::-webkit-scrollbar {
   transform: scale3d(0.4, 0.5);
   width: 9px;

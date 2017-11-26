@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import iglogo from './res/instagram.png';
-import fblogo from './res/facebook.png';
+import Social from './Social.js';
 import './App.css';
 
 class FullItem extends Component{
     constructor(props){
         super(props);
         this.state = {
+            share:false,
             data: {
                 title: '',
                 date: '',
@@ -17,17 +17,41 @@ class FullItem extends Component{
                 by:''
             }
         };
+        this.copylink = this.copylink.bind(this);
     }
     componentWillMount() {
         this.setState({
             data:this.props.data
         });
     }
+    copylink() {
+        var link = document.getElementById("link");
+        link.select();
+        document.querySelector('#link').select();
+        document.execCommand('copy');
+        this.setState({
+            share:true
+        });
+        window.setTimeout(()=>{
+            this.setState({
+                share: false
+            })
+        },2000)
+    }
     render () {
         return (
             <div className="App">
             <div className="top-banner">
-                <h3><span onClick={this.props.back}>BACK</span></h3>
+                <input type="text" value={`https://shambhuamitabh.com/${this.props.type}/${this.props.index}`} id="link" />
+                <h3>
+                    <span onClick={this.copylink}>
+                        {
+                            this.state.share === false ? 'share' :
+                            'link copied'
+                        }
+                    </span> 
+                    <span onClick={this.props.back}>go back</span>
+                </h3>
             </div>
                 <div className="tile home fullitem-title">
                     <h1>{this.state.data.title}</h1>
@@ -40,13 +64,7 @@ class FullItem extends Component{
                     <img src={this.state.data.imgsrc} />
                     <p>{this.state.data.content}</p>
                 </div>
-                <div className="tile social">
-                    <div className="social-links">
-                    <img src={iglogo}/>
-                    <img src={fblogo}/>
-                    <h3><span>CONTACT</span></h3>
-                    </div>
-                </div>
+                <Social />
             </div> 
         );
     }

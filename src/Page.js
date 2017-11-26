@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import iglogo from './res/instagram.png';
-import fblogo from './res/facebook.png';
 import FullItem from './FullItem.js';
+import Social from './Social.js';
 import './App.css';
 
 class Page extends Component{
@@ -17,10 +16,8 @@ class Page extends Component{
         this.closeItem = this.closeItem.bind(this);
     }
     componentWillMount(){
-        console.log(this.props.uid);
         firebase.database().ref(`${this.props.type}`).once('value',(snap)=>{
             if(snap) {
-                console.log(snap.val());
                 this.setState({
                     data: snap.val()
                 })
@@ -82,15 +79,9 @@ class Page extends Component{
                         </div>
                     }
                     </div>
-                    <div className="tile social">
-                        <div className="social-links">
-                        <img src={iglogo}/>
-                        <img src={fblogo}/>
-                        <h3><span>CONTACT</span></h3>
-                        </div>
-                    </div>
+                    <Social />
                 </div> :
-                <FullItem back={()=>{this.closeItem()}} data={this.state.data[this.state.showIndex]} />
+                <FullItem type={this.props.type} index={this.state.showIndex} back={()=>{this.closeItem()}} data={this.state.data[this.state.showIndex]} />
             }
             </div>
         );

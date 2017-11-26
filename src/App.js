@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import logo from './res/logo.png';
-import iglogo from './res/instagram.png';
-import fblogo from './res/facebook.png';
+import Admin from './Admin.js';
+import Social from './Social.js';
 import Page from './Page.js';
 import PageNotFound from './PageNotFound.js';
 
@@ -59,17 +59,17 @@ class App extends Component {
               America as well.
             </h3>
           </div>
-          <div className="tile social">
-            <div className="social-links">
-              <img src={iglogo}/>
-              <img src={fblogo}/>
-              <h3><span>CONTACT</span></h3>
-            </div>
-          </div>
+          <Social />
         </div> :
-        this.state.page === 'pondering' || 'prose' || 'poetry' ? 
+        this.state.page === 'pondering' ? 
         <Page type={this.state.page} uid={this.state.uid} back={()=>{this.goHome()}}/>:
-        <PageNotFound />
+        this.state.page === 'prose' ? 
+        <Page type={this.state.page} uid={this.state.uid} back={()=>{this.goHome()}}/>:
+        this.state.page === 'poetry' ? 
+        <Page type={this.state.page} uid={this.state.uid} back={()=>{this.goHome()}}/>:
+        this.state.page === 'admin' ?
+        <Admin /> :
+        <PageNotFound back={()=>{this.goHome()}} />
       }
 
       </div>

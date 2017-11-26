@@ -10,7 +10,7 @@ var config = {
     authDomain: "shambhuamitabh-main.firebaseapp.com",
     databaseURL: "https://shambhuamitabh-main.firebaseio.com",
     projectId: "shambhuamitabh-main",
-    storageBucket: "",
+    storageBucket: "shambhuamitabh-main.appspot.com",
     messagingSenderId: "462371653709"
   };
 firebase.initializeApp(config);
