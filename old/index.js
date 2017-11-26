@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import * as firebase from 'firebase';
-import 'typeface-roboto';
 
 var config = {
     apiKey: "AIzaSyADshFEc7Lnh92HjorrhvKqV1jKpUhx88k",

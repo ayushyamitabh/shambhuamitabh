@@ -1,22 +1,34 @@
-import React, { Component } from "react";
-import iglogo from './res/instagram.png';
-import fblogo from './res/facebook.png';
+import React, {Component} from 'react';
 import './App.css';
-
+import fb from './res/facebook.png';
+import ig from './res/instagram.png';
+import em from './res/email.png';
 class Social extends Component {
+    openLink(url){
+        var win = window.open(url,'_blank');
+        win.focus();
+    }
     render() {
-        return( 
-            <div className="tile social">
-                <div className="social-links">
-                <img src={fblogo} onClick={()=>{
-                    var win = window.open('https://www.facebook.com/Shambhu.Amitabh','_blank');
-                    win.focus();
-                }}/>
-                <img src={iglogo} onClick={()=>{
-                    var win = window.open('https://www.instagram.com/shambhuamitabh/','_blank');
-                    win.focus();
-                }}/>
-                <h3><a href="mailto:s_amitabh@yahoo.com?subject=Contact%20From%20Website"><span>CONTACT</span></a></h3>
+        return (
+            <div className="container footer">
+                <div className="tile footer">
+                    <div className="social">
+                        <img 
+                            onClick={()=>{
+                                this.openLink('https://www.facebook.com/Shambhu.Amitabh')
+                            }}
+                            src={fb} />
+                        <img 
+                            onClick={()=>{
+                                this.openLink('mailto:s_amitabh@yahoo.com?subject=Contact%20From%20Website')
+                            }} 
+                            src={em} />
+                        <img 
+                            onClick={()=>{
+                                this.openLink('https://www.instagram.com/shambhuamitabh/')
+                            }}
+                            src={ig} />
+                    </div>
                 </div>
             </div>
         );
