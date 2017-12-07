@@ -13,17 +13,17 @@ class Social extends Component {
             <div className="container footer">
                 <div className="tile footer">
                     <div className="social">
-                        <img 
+                        <img alt=''
                             onClick={()=>{
                                 this.openLink('https://www.facebook.com/Shambhu.Amitabh')
                             }}
                             src={fb} />
-                        <img 
+                        <img alt=''
                             onClick={()=>{
                                 this.openLink('mailto:s_amitabh@yahoo.com?subject=Contact%20From%20Website')
                             }} 
                             src={em} />
-                        <img 
+                        <img alt=''
                             onClick={()=>{
                                 this.openLink('https://www.instagram.com/shambhuamitabh/')
                             }}

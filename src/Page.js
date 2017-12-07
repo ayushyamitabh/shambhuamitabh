@@ -10,7 +10,8 @@ class Page extends Component{
             data: 'loading',
             showIndex: null,
             showItem: false,
-            share: false
+            share: false,
+            processed: null
         };
         this.openItem = this.openItem.bind(this);
         this.closeItem = this.closeItem.bind(this);
@@ -23,20 +24,22 @@ class Page extends Component{
                     data: snap.val()
                 })
             }
-            if (this.props.uid) {
-                if (this.props.uid < this.state.data.length) {
-                    this.setState({
-                        showIndex: this.props.uid,
-                        showItem: true
-                    })
+        }).then(()=>{
+            if (this.props.index) {
+                if (this.state.data[this.props.index]) {
+                    this.openItem(this.props.index);
+                } else {
+                    this.props.changePage('error')
                 }
             }
         })
     }
     openItem (index) {
+        var subs = this.state.data[index].content.split('\n');
         this.setState({
             showIndex: index,
-            showItem: true
+            showItem: true,
+            processed: subs
         })
     }
     copylink() {
@@ -44,6 +47,7 @@ class Page extends Component{
         link.select();
         document.querySelector('#link').select();
         document.execCommand('copy');
+        window.getSelection().removeAllRanges();
         this.setState({
             share:true
         });
@@ -56,7 +60,8 @@ class Page extends Component{
     closeItem () {
         this.setState({
             showIndex: null,
-            showItem: false
+            showItem: false,
+            processed: null
         })
     }
     render() {
@@ -86,16 +91,12 @@ class Page extends Component{
                                     <h4>LOADING...</h4>:
                                     <div className="items">
                                         {
-                                            this.state.data.map((data, index)=>{
+                                            Object.keys(this.state.data).map((key, index)=>{
                                                 return(
-                                                    <Item open={()=>{this.openItem(index)}} key={index} data={data} />
+                                                    <Item open={()=>{this.openItem(key)}} key={key} data={this.state.data[key]} />
                                                 );
                                             })
                                         }
-                                        <Item open={()=>{this.openItem(0)}} key={1} data={this.state.data[0]} />
-                                        <Item open={()=>{this.openItem(0)}} key={2} data={this.state.data[0]} />
-                                        <Item open={()=>{this.openItem(0)}} key={3} data={this.state.data[0]} />
-                                        <Item open={()=>{this.openItem(0)}} key={4} data={this.state.data[0]} />
                                     </div>
                                 }
                             </div>
@@ -115,7 +116,7 @@ class Page extends Component{
                         </div>
                         <div className="container control">
                             <div className="tile control">
-                                <input onChange={()=>{null}} value={`shambhuamitabh.com/${this.props.type}/${this.state.showIndex}`} id="link" />
+                                <input readOnly value={`https://shambhuamitabh.com/${this.props.type}/${this.state.showIndex}`} id="link" />
                                 <h4>
                                     <span onClick={()=>{this.copylink()}}>
                                         {
@@ -129,8 +130,19 @@ class Page extends Component{
                         </div>
                         <div className="container">
                             <div className="tile full-item">
-                                <img src={this.state.data[this.state.showIndex].imgsrc} />
-                                <p>{this.state.data[this.state.showIndex].content}</p>
+                                <img alt=''src={this.state.data[this.state.showIndex].imgsrc} />
+                                <p>
+                                {
+                                    this.state.processed.map((data, index)=>{
+                                        return (
+                                            <span key={`sub${index}`}>
+                                                {data}
+                                                <br />
+                                            </span>
+                                        );
+                                    })
+                                }
+                                </p>
                             </div>
                         </div>
                         <Social />
@@ -145,7 +157,7 @@ function Item (props) {
     return (
         <div className="item" onClick={props.open}>
             <h4>{props.data.title}</h4>
-            <img src={props.data.imgsrc} />
+            <img alt=''src={props.data.imgsrc} />
             <p>{props.data.shortdesc}</p>
         </div>
     );

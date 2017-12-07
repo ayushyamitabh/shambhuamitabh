@@ -112,11 +112,12 @@
   border: none !important;
   margin-left: 10px;
   margin-right: 10px;
+  filter: drop-shadow(0px 0px 5px #1a885e);
   cursor: pointer;
 }
 .social img:hover{
   background: none !important;
-  filter: drop-shadow(0px 0px 10px #99b3aa);
+  filter: drop-shadow(0px 0px 10px #1a885e);
 }
 .container.types{
   height: fit-content !important;
@@ -243,7 +244,8 @@
 }
 .item img{
   position: relative;
-  width: 50% !important;
+  width: 150px;
+  height: 150px;
   margin: 25px 0 25px 0;
 }
 .item p{
@@ -276,11 +278,12 @@
 }
 .full-item img{
   width: 45%;
+  border-radius: 0 !important;
 }
 .full-item p{
   font-family: 'Roboto',sans-serif;
-  font-size: 30px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 300;
   text-align: left;
   width: 80%;
   padding-top: 5%;
@@ -326,6 +329,290 @@
 }
 .control h4 span:hover{
   padding-bottom: 1px !important;
+}
+
+.admin-title {
+  display: flex;
+  justify-content: center;
+}
+.admin-title h1{
+  margin: 0 !important;
+  font-size: 80px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.admin-title h4{
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+.admin-title h4 span{
+  padding-bottom: 4px;
+  border-bottom: 0.5px solid black;
+  transition: all linear 0.2s;
+}
+.admin-title h4 span:hover{
+  padding-bottom: 1px;
+}
+.admin-password {
+  background: #bcffb1;
+  display: flex;
+  justify-content: center;
+}
+.admin-password span{
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 20px;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid black;
+  transition: all linear 0.2s !important;
+}
+.admin-password span:hover{
+  margin-top: 24px;
+  padding-bottom: 1px;
+}
+.admin-password input{
+  font-family: 'Oswald', sans-serif;
+  font-size: 40px;
+  font-weight: 100;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 0.5px solid black;
+}
+.admin-choose {
+  display: flex;
+  justify-content:  center;
+  background: #bcffb1;
+}
+.admin-choose h4{
+  margin-top: 10px !important;
+  margin-bottom: 20px !important;
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  font-weight: 300;
+}
+.admin-choose .choices{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+.choices h4{
+  cursor: pointer;
+  margin: 0 !important;
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+.choices h4:hover{
+  border-bottom: 0.5px solid black;
+}
+.add-item {
+  overflow-y: scroll !important;
+  width: 70%;
+  padding: 0 15% 0 15%;
+  max-height: 60%;
+}
+#imageheading{
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 100;
+  margin: 0 !important;
+  text-align: left !important;
+}
+.add-item progress{
+  width: 100%;
+  height: 6px;
+  border: 0.1px solid cyan !important;
+  margin-bottom: 6px;
+}
+.add-item input{
+  margin-bottom: 6px;
+  background: none !important;
+  outline: none;
+  border: none;
+  border-bottom: 0.5px solid black;
+  padding: 5px 0 5px 0;
+  display: block;
+  width: 100%;
+}
+#image {
+  border: none !important;
+  padding: none !important;
+}
+.add-item p{
+  margin: 0 !important;
+  text-align: right;
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  margin-bottom: 6px !important;
+}
+.add-item textarea{
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 0.5px solid black;
+  min-width: 100%;
+  max-width: 100%;
+}
+.add-item h3{
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  text-align: center;
+}
+.add-item h3 span{
+  cursor: pointer;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid black;
+  margin: 0 10px 0 10px;
+  transition: all linear 0.2s;
+}
+.add-item h3 span:hover{
+  padding-bottom: 1px;
+}
+.admin-choose p{
+  font-family: 'Oswald', sans-serif;
+}
+
+@media (max-width:425px) {
+  .tile h1{
+    font-size: 40px;
+  }
+  .tile img{
+    width: 70%;
+    margin-top: 20%;
+  }
+  .about h4{
+    font-size: 25px;
+  }
+  .card h4{
+    font-size: 12px;
+  }
+  .social img{
+    width: 30px;
+    height: 30px;
+    margin-top: 6%;
+  }
+  .item {
+    min-width: 45% !important;
+    width: 45% !important;
+    max-width: 45% !important;
+  }
+  .item img{
+    width: 90px;
+    height: 90px;
+  }
+  .admin-title h1{
+    font-size: 40px;
+  }
+  .admin-title h4{
+    font-size: 12px;
+  }
+  .admin-choose h4{
+    font-size: 30px;
+  }
+  .admin-choose .choices {
+    width: 80%;
+  }
+  .choices h4{
+    font-size: 15px;
+  }
+  .full-title h1{
+    font-size: 40px;
+    max-width: 90%;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden;
+  }
+  .control input{
+    font-size: 9px;
+  }
+  .control h4{
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width:375px) {
+  .tile img{
+    margin-top: 40%;
+  }
+  .tile h1 {
+    font-size: 40px;
+  }
+  .about h4{
+    font-size: 22px;
+  }
+  .card h4{
+    font-size: 10px;
+  }
+  .page-title h1{
+    font-size: 60px !important;
+  }
+  .control h4{
+    font-size: 10px;
+  }
+  .control input{
+    font-size: 10px;
+  }
+  .full-title h4{
+    font-size: 12px;
+  }
+  .admin-choose h4{
+    font-size: 25px;
+  }
+  .choices h4{
+    font-size: 15px;
+  }
+  .control input{
+    width: 10%;
+  }
+  .social img{
+    width: 30px;
+    height: 30px;
+    margin-top: 6%;
+  }
+}
+
+@media (max-width:320px){
+  .tile img {
+    margin-top: 25%;
+  }
+  .tile h1{
+    font-size: 30px;
+  }
+  .tile .sections h4 {
+    font-size: 15px;
+  }
+  .social img{
+    margin-top: 6%;
+  }
+  .control input{
+    flex: none;
+    width: fit-content;
+    margin: 0 !important;
+    float: left !important;
+  }
+  .page-title h4{
+    font-size: 12px;
+    text-align: center;
+    padding: 0 10% 0 10%;
+  }
+  .error h1{
+    margin-top: 65%;
+  }
+  .error h3{
+    font-size: 13px;
+  }
+  .admin-choose h4{
+    font-size: 20px;
+  }
+  .choices h4{
+    font-size: 10px;
+  }
+}
+@media(max-width:411px){
 }
 
 ::-webkit-scrollbar {

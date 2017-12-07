@@ -12,7 +12,7 @@ class Home extends Component {
         <div className="app">
             <div className="container">
                 <div className="tile">
-                    <img src={logo}/>
+                    <img alt=''src={logo}/>
                     <h1>SHAMBHU AMITABH</h1>
                     <div className="sections">
                     <h4 onClick={()=>{this.props.changePage('pondering')}}><span>PONDERING</span> , </h4>
