@@ -41,7 +41,7 @@ export default class Section extends Component{
                                 {       this.state.data?
                                        Object.keys(this.state.data).map((key,index)=>{
                                                return(
-                                                        <Card key={`item${index}`} data-aos="fade-up" className="item-card" data-aos-offset={1}  elevation={6}>
+                                                        <Card key={`item${index}`} className="item-card" elevation={6}>
                                                                 <div style={{display: 'flex', flexDirection: 'row'}}>
                                                                         <div style={{flex: 1}}>
                                                                                 <Typography variant="subheading">{this.state.data[key].title}</Typography>

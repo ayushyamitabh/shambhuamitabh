@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './Admin.css';
 import ShambhuAmitabh from './res/logo.png';
-import { Avatar, Button, Card, CardHeader, CardContent,TextField,  Typography, InputLabel, LinearProgress, Snackbar } from '@material-ui/core';
-import { Select, MenuItem  }from 'material-ui';
+import { Avatar, Button, Card, CardHeader, CardContent,TextField,  Typography, InputLabel, LinearProgress, Snackbar,Select, MenuItem } from '@material-ui/core';
 import UploadIcon from '@material-ui/icons/CloudUpload';
 import Save from '@material-ui/icons/Save';
 import * as firebase from 'firebase';
@@ -120,23 +119,19 @@ export default class AdminAdd extends Component{
                                                 title="Pick a type"
                                         />
                                         <CardContent>
-                                                <InputLabel htmlFor="type">Entry Type</InputLabel>
-                                                <Select
-                                                        disabled={this.state.uploading || this.state.uploadpercent === 100}
-                                                        id="type"
-                                                        name="type"
-                                                        value={this.state.eType}
+                                                <select value={this.state.eType} disabled={this.state.uploading || this.state.uploadpercent === 100}                                                         
                                                         onChange={(e)=>{
                                                                 this.setState({
                                                                         eType: e.target.value
                                                                 })
                                                         }}
-                                                        fullWidth
+                                                        style={{width:'100%'}}
                                                 >
-                                                        <MenuItem value='poetry'>Poetry</MenuItem>
-                                                        <MenuItem value='pondering'>Pondering</MenuItem>
-                                                        <MenuItem value='prose'>Prose</MenuItem>
-                                                </Select>
+                                                        <option value=''>None</option>
+                                                        <option value='poetry'>Poetry</option>
+                                                        <option value='pondering'>Pondering</option>
+                                                        <option value='prose'>Prose</option>
+                                                </select>
                                         </CardContent>
                                 </Card>
                                 {

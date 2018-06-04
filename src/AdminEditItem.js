@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import './Admin.css';
 import ShambhuAmitabh from './res/logo.png';
-import { Avatar, Button, Card, CardHeader, CardContent,TextField,  Typography, InputLabel, LinearProgress, Snackbar } from '@material-ui/core';
-import { Select, MenuItem  }from 'material-ui';
+import { Avatar, Button, Card, CardHeader, CardContent,TextField,  Typography, InputLabel, LinearProgress, Snackbar,Select, MenuItem } from '@material-ui/core';
 import UploadIcon from '@material-ui/icons/CloudUpload';
 import Save from '@material-ui/icons/Save';
 import * as firebase from 'firebase';
