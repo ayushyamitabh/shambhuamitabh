@@ -28,6 +28,7 @@ export default class Admin extends Component{
         notify(message){
                 this.setState({
                         notify: true,
+                        notifyMessage: message
                 })
         }
         hideNotification() {
