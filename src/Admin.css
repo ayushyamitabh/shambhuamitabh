@@ -1,0 +1,42 @@
+.admin-home-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex-direction: column;
+}
+.admin-img{
+        max-width: 15%;
+        border-radius: 100%;
+        border: 1px solid darkgray;
+        margin: 10px;
+}
+.push-down{
+        margin-top: 10px !important;
+}
+.admin-home{
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        padding: 5% 10%;
+        height: fit-content;
+}
+.admin-home-header{
+        display:  flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+}
+.aboutme-card{
+        margin-top: 10px;
+        width: 100%;
+        border-radius: 10px !important;
+}
+.admin-home-container textarea{
+        min-height: 100px !important;
+        max-height: 100px !important;
+}
+.add-card{
+        border-radius: 10px !important;
+        width: 100%;
+        margin: 0 auto;
+}

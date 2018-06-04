@@ -1,0 +1,38 @@
+.home-container{
+        padding-top: 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+}
+.logo-img{
+        max-width: 25%;
+        border-radius: 100%;
+        border: 1px solid darkgray;
+        margin: 10px;
+}
+.name{
+        margin-bottom: 10px !important;
+}
+.button-bar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+}
+.section-button{
+        margin: 0 5px !important;
+}
+.about-me{
+        margin: 10px auto !important;
+        border-radius: 5px !important;
+        border: 1px solid lightgrey;
+        width:  35%;
+}
+.social-buttons{
+        margin: 0 5px !important;
+}
+.social-button-icons{
+        max-width: 65%;
+        border-radius: 100%;
+}

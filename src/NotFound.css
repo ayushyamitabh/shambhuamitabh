@@ -1,0 +1,16 @@
+.notfound-card{
+        padding: 20px !important;
+        border-radius: 5px !important;
+}
+.notfound-avatar{
+        width: 100px !important;
+        height: 100px !important;
+        margin-bottom: 10px;
+}
+.notfound-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;;
+}
