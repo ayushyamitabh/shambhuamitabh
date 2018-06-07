@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Avatar, Button, Card, Divider, IconButton, LinearProgress, Typography} from '@material-ui/core';
+import {Avatar, Button, Card, Divider, IconButton, LinearProgress, Snackbar, Typography} from '@material-ui/core';
 import * as firebase from 'firebase';
 import ShambhuAmitabh from './res/logo.png';
 import './Section.css';
@@ -10,6 +10,21 @@ export default class AdminEditSection extends Component{
                         data: null,
                         loading: true
                 };
+                this.deleteEntry = this.deleteEntry.bind(this);
+                this.notify = this.notify.bind(this);
+                this.hideNotification = this.hideNotification.bind(this);
+        }
+        notify(message){
+                this.setState({
+                        notify: true,
+                        notifyMessage: message
+                })
+        }
+        hideNotification() {
+                this.setState({
+                        notify: false,
+                        notifyMessage: ''
+                })
         }
         componentDidMount(){
                 firebase.database().ref(`${this.props.match.params.section}/`).once('value').then((snap)=>{
@@ -21,9 +36,25 @@ export default class AdminEditSection extends Component{
                         }
                 })
         }
+        deleteEntry(key) {
+                console.log(key);
+                if (window.confirm('Are you sure you want to delete this entry?'))
+                firebase.database().ref(`${this.props.match.params.section}/${key}`).set(null).then(()=>{
+                        this.notify(`Deleted from ${this.props.match.params.section}.`);
+                        window.location.reload();
+                })
+        }
         render() {
                 return(
                         <div className="section-container" data-aos="">
+                                <div style={{position: 'fixed', bottom: 0, zIndex: 100}}>
+                                        <Snackbar 
+                                                open={this.state.notify}
+                                                message={this.state.notifyMessage}
+                                                autoHideDuration={3000}
+                                                onClose={this.hideNotification}
+                                        />
+                                </div>
                                 {
                                         this.state.loading?
                                         <LinearProgress className="loading-bar"/>:
@@ -50,8 +81,11 @@ export default class AdminEditSection extends Component{
                                                                                 <Typography variant="subheading">{this.state.data[key].title}</Typography>
                                                                                 <Typography variant="caption">{this.state.data[key].date}</Typography>
                                                                         </div>
-                                                                        <Button variant="outlined" href={`/admin/edit/${this.props.match.params.section}/${key}`}>
+                                                                        <Button variant="outlined" href={`/admin/edit/${this.props.match.params.section}/${key}`} size="small" style={{marginRight:7}}>
                                                                                 Edit
+                                                                        </Button>
+                                                                        <Button variant="outlined" color="secondary" onClick={()=>{this.deleteEntry(key)}} size="small">
+                                                                                Delete
                                                                         </Button>
                                                                 </div>
                                                                 <Divider style={{margin:5, marginBottom:5}} />

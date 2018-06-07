@@ -100,6 +100,15 @@ export default class AdminHome extends Component{
                                         <Button variant="outlined" color="secondary" style={{margin: '0 5px', flex: 1}} onClick={()=>{this.props.history.push("/admin/edit/pondering")}}><EditIcon style={{marginRight:10}}/>Pondering</Button>
                                         <Button variant="outlined" color="secondary" style={{margin: '0 5px', flex: 1}} onClick={()=>{this.props.history.push("/admin/edit/prose")}}><EditIcon style={{marginRight:10}}/>Prose</Button>
                                 </div>
+                                <Divider style={{margin: '5px 0'}} />
+                                <Typography variant="subheading" className="push-down" data-aos="fade-up" data-aos-delay={750}>
+                                        How to move an item:
+                                </Typography>
+                                <Typography variant="caption"  data-aos="fade-up" data-aos-delay={750}>
+                                        To move an item - go to edit section, go to edit the item to move and change the type for the item.
+                                        <br />
+                                        Example: [ Edit Poetry ] > '{`Title`}' [ Edit ] > [Change Type]
+                                </Typography>
                         </div>
                 );
         }

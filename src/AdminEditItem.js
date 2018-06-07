@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Admin.css';
 import ShambhuAmitabh from './res/logo.png';
-import { Avatar, Button, Card, CardHeader, CardContent,TextField,  Typography, InputLabel, LinearProgress, Snackbar,Select, MenuItem } from '@material-ui/core';
+import { Avatar, Button, Card, CardHeader, CardContent,TextField,  Typography,  LinearProgress, Snackbar } from '@material-ui/core';
 import UploadIcon from '@material-ui/icons/CloudUpload';
 import Save from '@material-ui/icons/Save';
 import * as firebase from 'firebase';
@@ -10,6 +10,7 @@ export default class AdminAdd extends Component{
                 super(props);
                 this.state={
                         eType: '',
+                        type: '',
                         id: '',
                         by: '',
                         content: ' ',
@@ -24,6 +25,7 @@ export default class AdminAdd extends Component{
                 this.createItem = this.createItem.bind(this);
                 this.notify = this.notify.bind(this);
                 this.hideNotification = this.hideNotification.bind(this);
+                this.deleteEntry = this.deleteEntry.bind(this);
         }
         componentDidMount() {
                 firebase.database().ref(`${this.props.match.params.section}/${this.props.match.params.id}`).once('value').then((snap)=>{
@@ -31,6 +33,7 @@ export default class AdminAdd extends Component{
                                 const data = snap.val();
                                 this.setState({
                                         eType: this.props.match.params.section,
+                                        type: this.props.match.params.section,
                                         id: this.props.match.params.id,
                                         by: data.by,
                                         content: data.content,
@@ -86,6 +89,21 @@ export default class AdminAdd extends Component{
                         })
                 }
         }
+        deleteEntry(key, confirmed = false) {
+                console.log(key);
+                if (!confirmed) {
+                        if (window.confirm('Are you sure you want to delete this entry?'))
+                        firebase.database().ref(`${this.state.type}/${this.state.id}`).set(null).then(()=>{
+                                this.notify(`Deleted from ${this.state.type}.`);
+                                window.location.href="/admin/edit/prose";
+                        })
+                } else {                        
+                        firebase.database().ref(`${this.state.type}/${this.state.id}`).set(null).then(()=>{
+                                this.notify(`Deleted from ${this.state.type}.`);
+                                window.location.href="/admin/edit/prose";
+                        })
+                }
+        }
         createItem(){
                 this.setState({
                         uploading: true
@@ -104,8 +122,12 @@ export default class AdminAdd extends Component{
                                 shortdesc: this.state.shortdesc,
                                 title: this.state.title
                         };
+                        if (this.state.type !== this.state.eType) {
+                                this.deleteEntry(this.state.id, true);
+                                this.notify(`Moving to ${this.state.eType}`);
+                        }
                         firebase.database().ref(`${this.state.eType}/${this.state.id}`).set(obj).then(()=>{
-                                this.notify('Successfully added new entry.');
+                                this.notify('Successfully updated entry.');
                                 this.props.history.push('/admin/home');
                         }).catch((err)=>{
                                 this.notify(err.message);
@@ -130,8 +152,11 @@ export default class AdminAdd extends Component{
                                                 <Typography variant="subheading"> Shambhu Amitabh </Typography>
                                                 <Typography variant="caption"> Add An Entry </Typography>
                                         </div>
-                                        <Button variant="outlined" href="/admin/home">
+                                        <Button variant="outlined" href="/admin/home" style={{marginRight:7}}>
                                                 Cancel
+                                        </Button>
+                                        <Button variant="outlined" onClick={()=>{this.deleteEntry(this.state.id)}} color="secondary">
+                                                Delete
                                         </Button>
                                 </div>
                                 <Card className="add-card push-down" data-aos="fade-up" data-aos-delay={150}>
@@ -139,9 +164,7 @@ export default class AdminAdd extends Component{
                                                 title="Pick a type"
                                         />
                                         <CardContent>
-                                                <InputLabel htmlFor="type">Entry Type</InputLabel>
-                                                <Select
-                                                        disabled={true}
+                                                <select
                                                         id="type"
                                                         name="type"
                                                         value={this.state.eType}
@@ -150,12 +173,12 @@ export default class AdminAdd extends Component{
                                                                         eType: e.target.value
                                                                 })
                                                         }}
-                                                        fullWidth
+                                                        style={{width:'100%'}}
                                                 >
-                                                        <MenuItem value='poetry'>Poetry</MenuItem>
-                                                        <MenuItem value='pondering'>Pondering</MenuItem>
-                                                        <MenuItem value='prose'>Prose</MenuItem>
-                                                </Select>
+                                                        <option value='poetry'>Poetry</option>
+                                                        <option value='pondering'>Pondering</option>
+                                                        <option value='prose'>Prose</option>
+                                                </select>
                                         </CardContent>
                                 </Card>
                                 {
