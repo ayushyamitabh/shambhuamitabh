@@ -40,3 +40,21 @@
         width: 100%;
         margin: 0 auto;
 }
+.login-card{
+        width: 35%;
+        margin-top: 10px;
+}
+@media  (max-width:500px){
+        .admin-img{
+                max-width: 50%;
+        }
+        .login-card{
+                width: 75%;
+        }
+        .admin-home{
+                padding: 5% 2%;
+        }
+        h1{
+                font-size: 24px !important;
+        }
+}

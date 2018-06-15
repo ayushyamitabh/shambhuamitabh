@@ -36,3 +36,11 @@
         max-width: 65%;
         border-radius: 100%;
 }
+@media  (max-width:500px){
+        .logo-img{
+                max-width: 50%;
+        }
+        .about-me{
+                width: 75%;
+        }
+}

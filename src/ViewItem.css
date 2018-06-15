@@ -29,3 +29,8 @@ textarea{
         margin-top: 5px;
         margin-bottom: 5px;
 }
+@media  (max-width:500px){
+        .viewitem-container{
+                padding: 5% 7%;
+        }
+}

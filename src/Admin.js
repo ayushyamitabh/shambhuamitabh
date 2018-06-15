@@ -52,7 +52,7 @@ export default class Admin extends Component{
                                         onClose={this.hideNotification}
                                 />
                                 <img data-aos='fade-up'  className="admin-img" src={ShambhuAmitabh}  alt="Shambhu Amitabh"/>
-                                <Card style={{width:'35%', marginTop: 10}} data-aos="slide-up">
+                                <Card className="login-card" data-aos="slide-up">
                                         <CardContent style={{display:'flex', flexDirection:'column'}}>
                                                 <TextField 
                                                         className="push-down"

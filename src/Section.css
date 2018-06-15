@@ -26,3 +26,8 @@
 .item-card:hover{
         transform: scale(1.05) !important;
 }
+@media  (max-width:500px){
+        .section-container{
+                padding: 5% 10%;
+        }
+}
